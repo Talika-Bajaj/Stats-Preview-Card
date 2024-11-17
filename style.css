@@ -30,52 +30,64 @@ body {
     background-color: var(--Very_dark_blue_bg);
 }
 
+main {
+    margin: 50px auto;
+}
+
 .card {
-    width: 1050px;
+    width: 90vw;
+    /* width: 1050px; */
     border-radius: 12px;
     background-color: var(--Dark_desaturated_blue_cardBG);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: 'image-column' 'info-column';
+    /* gap: 25px; */
 }
 
 .info {
-    display: flex;
-    gap: 30px;
-}
-
-.left,
-.right {
-    width: 50%;
-}
-
-.left {
-    padding: 71px 55px 50px;
+    grid-area: info-column;
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 25px;
+    /* padding: 65px; */
+    padding: 45px 50px;
+    text-align: center;
 }
 
-.left h1 {
+.heading {
     color: var(--White_stats_heading);
+    /* font-size: 35px; */
 }
 
 span {
     color: var(--Soft_violet_accent);
 }
 
-.left p {
+.display-data {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 42px;
+    /* width: 270px; */
+    margin: auto;
+}
+
+.para {
     font-family: "Inter", sans-serif;
     color: var(--Slightly_transparent_white_para);
     line-height: 1.6;
+    font-size: 15px;
 }
 
 .stats {
-    margin-top: 40px;
+    /* margin-top: 40px; */
     display: flex;
+    flex-direction: column;
+    gap: 45px;
     justify-content: space-between;
 }
 
-.one,
-.two,
-.three {
+.data {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -94,12 +106,13 @@ span {
     letter-spacing: 2px;
 }
 
-.right {
+.image {
+    grid-area: image-column;
     position: relative;
 }
 
-img {
-    border-bottom-right-radius: 15px;
+#header-image {
+    border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     width: 100%;
     height: 100%;
@@ -113,51 +126,83 @@ img {
     height: 100%;
     width: 100%;
     border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
-@media screen and (max-width: 1160px) {
-    .card {
-        width: 95vw;
-        margin: 70px auto;
+@media screen and (width > 400px) {
+    .display-data {
+        width: 270px;
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (width > 450px) {
     .card {
-        width: 80vw;
+        width: 400px;
+    }
+}
+
+@media screen and (width > 1060px) {
+    .card {
+        grid-template-columns: repeat(2, 50%);
+        grid-template-areas: 'info-column image-column';
+        width: 980px;
+        height: 448px;
     }
 
     .info {
-        flex-direction: column-reverse;
+        text-align: left;
+        padding: 65px 54px;
+        gap: 30px;
     }
 
-    .left,
-    .right {
-        width: 100%;
+
+    .heading {
+        /* color: var(--White_stats_heading); */
+        font-size: 35px;
     }
 
-    img {
-        /* border-top-right-radius: 12px; */
-        border-bottom-right-radius: 0;
-        border-top-left-radius: 15px;
-        width: 100%;
-        height: 100%;
+    .display-data {
+        width: 368px;
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 62px;
+        /* text-align: left; */
+        margin: 0;
     }
 
-}
-
-@media screen and (max-width: 600px) {
-    .left {
-        padding: 50px 40px;
-        text-align: center;
+    .image {
+        height: 448px;
+        border-top-left-radius: 0;
+        /* border-top-right-radius: 15px; */
+        border-bottom-right-radius: 15px;
+    }
+    
+    #header-image {
+        border-top-left-radius: 0px;
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    
+    .box {
+        border-bottom-right-radius: 15px;
+        border-top-left-radius: 0;
     }
 
     .stats {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        text-align: center;
+        flex-direction: row;
+        gap: 0;
+    }
+}
+
+@media screen and (width > 1200px) {
+    .card {
+        grid-template-columns: repeat(2, 50%);
+        width: 1130px;
+    }
+
+    .info {
+        /* text-align: left; */
+        padding: 75px 65px 65px;
+        /* gap: 30px; */
     }
 }
